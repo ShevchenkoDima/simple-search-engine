@@ -23,10 +23,13 @@ import org.apache.commons.cli.ParseException;
 public class SimpleSearchEngineCli {
 
     public static void main(String[] args) throws Exception {
+        System.out.println(doRequest(args));
+    }
+
+    static String doRequest(String[] args) {
         CommandLine cmd = getCommandLine(args, getOptions());
         DocumentRequestAction action = getDocumentRequestAction(cmd);
-        String result = action.execute(new DocumentHttpService());
-        System.out.println(result);
+        return action.execute(new DocumentHttpService());
     }
 
     private static CommandLine getCommandLine(String[] args, Options options) {
